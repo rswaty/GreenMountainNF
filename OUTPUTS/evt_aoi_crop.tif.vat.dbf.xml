@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en"><Esri><CreaDate>20220520</CreaDate><CreaTime>08254200</CreaTime><ArcGISFormat>1.0</ArcGISFormat><SyncOnce>TRUE</SyncOnce><DataProperties><lineage><Process ToolSource="c:\program files\arcgis\pro\Resources\ArcToolbox\toolboxes\Data Management Tools.tbx\JoinField" Date="20220520" Time="082542">JoinField evt_aoi_crop.tif VALUE forLegend.csv VALUE EVT_NAME3</Process></lineage></DataProperties></Esri></metadata>
