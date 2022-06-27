@@ -1,0 +1,12 @@
+---
+title: "To do"
+author: "Randy Swaty"
+date: "6/3/2022"
+output: html_document
+---
+
+## for Phase II due by June 28th, 2022
+
+* change map size, add download link
+* Remove "Deer Creek" from charts--DONE
+* add in Ecosystem Function map from IFTDSS
