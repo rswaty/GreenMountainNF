@@ -2,7 +2,9 @@
 title: "tryZOOM"
 author: "Randy Swaty"
 date: "6/3/2022"
-output: html_document
+output:
+  html: default
+  '': default
 ---
 
 ```{r setup, include=FALSE}
@@ -29,8 +31,11 @@ script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
 ```
 
 
-```{r out.width="50%"}
-knitr::include_graphics('assets/bpsChart.png')
+```{r }
+knitr::include_graphics('docs/assets/bps.jpg')
 ```
 
+```{r out.width="60%"}
+knitr::include_graphics('docs/assets/evh.jpg')
+```
 

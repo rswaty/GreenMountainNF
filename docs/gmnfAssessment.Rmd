@@ -15,9 +15,15 @@ output:
 library(tufte)
 library(tidyverse)
 # invalidate cache when the tufte version changes
-knitr::opts_chunk$set(cache.extra = packageVersion('tufte'))
+knitr::opts_chunk$set(echo = FALSE)
 options(htmltools.dir.version = FALSE)
 ```
+
+
+
+
+
+
 
 ## Introduction and goals
 
@@ -35,7 +41,7 @@ Additionally-this document is meant to be a conversation starter, and does not i
 LANDFIRE products are designed for use on large areas, typically comparing watersheds to watersheds for example. Often users ask "how small of an area can we use LANDFIRE data?" which is a tough question to answer as it varies based on data quality, heterogeneity of the vegetation (and underlying driving factors such as soils), and the particular dataset(s) being considered.  Further, the purpose of data use is of particular importance.  Using the data to explore trends is one thing, using LANDFIRE (or any data for that matter) to make place-specific decisions is another.  
 
 ```{r fig-margin, echo=FALSE, fig.cap="Schematic illustrating need for more review of data for smaller landscapes.", fig.height=3.5, fig.margin=TRUE, fig.width=3.5, message=FALSE, warning=FALSE, cache=TRUE}
-knitr::include_graphics('reviewSchematic.png')
+knitr::include_graphics('assets/reviewSchematic.png')
 ```
 
 LANDFIRE data has been successfully used for mid-scale planning (~10k acres), but that was after considerable review by experts.  To use data for smaller areas or for more detailed decision making requires more review per unit area (see graphic in sidebar). 
@@ -66,14 +72,23 @@ Based on LANDFIRE BpS data three BpSs were present on over 90% of the landscape 
 
 <br>
 
+
 ```{r bpsChart, echo=FALSE, fig.fullwidth = TRUE, message=FALSE, warning=FALSE, cache=TRUE}
-knitr::include_graphics('./OUTPUTS/bpsChart.png')
+knitr::include_graphics('assets/bpsChart.png')
 ```
 
 <br>
 
-```{r bpsMap, echo=FALSE,  fig.fullwidth = TRUE, warning=FALSE, message=FALSE, cache=TRUE}
-knitr::include_graphics('./bps.jpg')
+```{r bpsChart-ownership, echo=FALSE, fig.fullwidth = TRUE, message=FALSE, warning=FALSE, cache=TRUE}
+knitr::include_graphics('assets/bpsChart-ownership.png')
+```
+
+<br>
+
+Biophysical Settings Map, Proclamation Area with Ownership Boundary in black
+<br>
+```{r bpsMap, echo=FALSE,  out.width="80%", warning=FALSE, message=FALSE, cache=TRUE}
+knitr::include_graphics('assets/bps.jpg')
 ```
 
 <br>
@@ -91,23 +106,14 @@ In the last section of the document we will explore a couple ways to compare thi
 
 ***
 
-## What does the existing vegetation look like?
-
-LANDFIRE delivers multiple datasets^[visit the [Vegetation page](https://landfire.gov/vegetation.php) to get more information] used to characterize current conditions.  Below are charts and maps of Existing Vegetation Type (EVT), Cover (EVC) and Height (EVH).
-
-The EVT data represents conditions as of ca 2016.  This dataset is currently (January, 2022) to represent conditions as of ca2020.  Release data TBD. 
-
-<br>
-<br>
-
 ## Historical fire on the Green Mountain NF
 The LANDFIRE Biophysical Settings spatial data includes modeled historical Mean Fire Return Intervals (MFRI) for surface, mixed, replacement and all fires.  By converting the MFRI to an annual probability (1/MFRI) then multiplying the annual probability by the acres of each BpS you can approximate the annual historical fire amounts.
 
-```{r historical fire, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=10 }
+```{r historical fire, echo=FALSE, message=FALSE, warning=FALSE,  fig.fullwidth = TRUE }
 
 bpsMFRI10 <- read_csv("OUTPUTS/bps_aoi_attributes.csv") %>%
    slice(-c(7, 24)) %>%
-  top_n(n = 10, wt = rel_percent) %>%
+  top_n(n = 6, wt = rel_percent) %>%
   arrange(desc(rel_percent))  %>%
   dplyr::select(4, 7:11) %>%
   pivot_longer(cols = 2:5,
@@ -123,11 +129,60 @@ annualFireChart <- bpsMFRI10 %>%
   coord_flip() +
   labs(
     title = "Historical annual acres burned per BpS",
-    subtitle = "Split out by fire type",
+    subtitle = "Split out by fire type.  Top 6 BpSs by percent of Green Mountain NF shown",
     caption = "Data from landfire.gov.",
     x = "",
     y = "Acres")+
-  theme_minimal(base_size = 14)+
+  theme_minimal(base_size = 8)+
+  theme(plot.caption = element_text(hjust = 0, face= "italic"), #Default is hjust=1
+        plot.title.position = "plot", #NEW parameter. Apply for subtitle too.
+        plot.caption.position =  "plot") +
+  scale_fill_manual(values = c("#AA3377" , #ALL
+                               "#b57805", #MIXED
+                               "#8a8978", #REPLACEMENT
+                               "#d6d25c"), # SURFACE
+                    name = "Fire Type", 
+                    labels = c("All",
+                               "Mixed",
+                               "Replacement",
+                              "Surface"))
+
+annualFireChart
+
+
+
+```
+<br>
+
+**Within the Ownership Boundary there was roughly 500 acres of fire per year prior to European Settlement**
+
+<br>
+
+```{r historical fire-ownership, echo=FALSE, message=FALSE, warning=FALSE,  fig.fullwidth = TRUE }
+
+bpsMFRI10 <- read_csv("OUTPUTS/bps_aoi_attributes-ownership2.csv") %>%
+   slice(-c(7, 24)) %>%
+  top_n(n = 6, wt = rel_percent) %>%
+  arrange(desc(rel_percent))  %>%
+  dplyr::select(4, 7:11) %>%
+  pivot_longer(cols = 2:5,
+               names_to = "fireType",
+               values_to = "returnInterval") %>%
+  mutate(annualProb = (1/returnInterval),
+         annualAcres = (annualProb*acres)
+         )
+
+annualFireChart <- bpsMFRI10 %>%
+  ggplot(aes(fill=(fireType), y=annualAcres, x=reorder(BPS_NAME, acres))) + 
+  geom_col(width = 0.8, position = position_dodge()) +
+  coord_flip() +
+  labs(
+    title = "Historical annual acres burned per BpS",
+    subtitle = "Split out by fire type.  Top 6 BpSs by percent of Green Mountain NF (within ownership) shown",
+    caption = "Data from landfire.gov.",
+    x = "",
+    y = "Acres")+
+  theme_minimal(base_size = 8)+
   theme(plot.caption = element_text(hjust = 0, face= "italic"), #Default is hjust=1
         plot.title.position = "plot", #NEW parameter. Apply for subtitle too.
         plot.caption.position =  "plot") +
@@ -149,6 +204,16 @@ annualFireChart
 
 
 
+***
+
+## What does the existing vegetation look like?
+
+LANDFIRE delivers multiple datasets^[visit the [Vegetation page](https://landfire.gov/vegetation.php) to get more information] used to characterize current conditions.  Below are charts and maps of Existing Vegetation Type (EVT), Cover (EVC) and Height (EVH).
+
+The EVT data represents conditions as of ca 2016.  This dataset is currently (January, 2022) to represent conditions as of ca2020.  Release data TBD. 
+
+<br>
+<br>
 
 
 **Green Mountain NF dominated by Northern Hardwoods Forests as of ca2016**
@@ -157,14 +222,20 @@ Based on LANDFIRE EVT data there appears to be a loss of the swamp systems.  Wha
 
 
 
-```{r evtChart, echo=FALSE, fig.fullwidth = TRUE, message=FALSE, warning=FALSE, cache=TRUE}
-knitr::include_graphics('./OUTPUTS/evtname_barplot.png')
+```{r evtChart, echo=FALSE,  fig.fullwidth = TRUE, message=FALSE, warning=FALSE, cache=TRUE}
+knitr::include_graphics('./assets/evtname_barplot.png')
 ```
 
 <br>
 
-```{r evtMap, echo=FALSE,  fig.fullwidth = TRUE, warning=FALSE, message=FALSE, cache=TRUE}
-knitr::include_graphics('./evt.jpg')
+```{r evtChart-ownership, echo=FALSE,  fig.fullwidth = TRUE, message=FALSE, warning=FALSE, cache=TRUE}
+knitr::include_graphics('./assets/evtname_barplot-ownership.png')
+```
+
+<br>
+
+```{r evtMap, echo=FALSE,  out.width="80%", warning=FALSE, message=FALSE, cache=TRUE}
+knitr::include_graphics('assets/evt.jpg')
 ```
 
 <br>
@@ -179,14 +250,20 @@ Note: the data is delivered in 1% increments.  In the graphics below the cover w
 
 
 
-```{r evcChart, echo=FALSE, fig.fullwidth = TRUE, message=FALSE, warning=FALSE, cache=TRUE}
-knitr::include_graphics('./OUTPUTS/evcclass_barplot.png')
+```{r evcChart, echo=FALSE,  fig.fullwidth = TRUE, message=FALSE, warning=FALSE, cache=TRUE}
+knitr::include_graphics('assets/evcclass_barplot.png')
 ```
 
 <br>
 
-```{r evcMap, echo=FALSE,  fig.fullwidth = TRUE, warning=FALSE, message=FALSE, cache=TRUE}
-knitr::include_graphics('./evc.jpg')
+```{r evcChart-ownership, echo=FALSE,  fig.fullwidth = TRUE, message=FALSE, warning=FALSE, cache=TRUE}
+knitr::include_graphics('assets/evcclass_barplot-ownership.png')
+```
+
+<br>
+
+```{r evcMap, echo=FALSE,  out.width="80%", warning=FALSE, message=FALSE, cache=TRUE}
+knitr::include_graphics('assets/evc.jpg')
 ```
 
 <br>
@@ -201,14 +278,14 @@ Note: the data is delivered in 1% increments.  In the graphics below the cover w
 
 
 
-```{r evhChart, echo=FALSE, fig.fullwidth = TRUE, message=FALSE, warning=FALSE, cache=TRUE}
+```{r evhChart, echo=FALSE,  fig.fullwidth = TRUE, message=FALSE, warning=FALSE, cache=TRUE}
 knitr::include_graphics('./OUTPUTS/evhclass_barplot.png')
 ```
 
 <br>
 
-```{r evhMap, echo=FALSE,  fig.fullwidth = TRUE, warning=FALSE, message=FALSE, cache=TRUE}
-knitr::include_graphics('./evh.jpg')
+```{r evhMap, echo=FALSE,  out.width="80%", warning=FALSE, message=FALSE, cache=TRUE}
+knitr::include_graphics('assets/evh.jpg')
 ```
 <br>
 
@@ -287,7 +364,7 @@ The following chart represents reference and current percentages of succession c
 
 <br>
 
-```{r bpsScls, echo=FALSE,  fig.fullwidth = TRUE, warning=FALSE, message=FALSE, cache=TRUE}
+```{r bpsScls, echo=FALSE,   fig.fullwidth = TRUE, warning=FALSE, message=FALSE, cache=TRUE}
 knitr::include_graphics('./OUTPUTS/bpsScls.png')
 ```
 <br>
@@ -311,7 +388,7 @@ library(readr)
 
 
 # read in snkyPdata
-snkyPdata <- read_csv("DATA/sncEvtSankey.csv")
+snkyPdata <- read_csv("OUTPUTS/sncEvtSankey.csv")
 
 # define nodes
 nodes <- data.frame(

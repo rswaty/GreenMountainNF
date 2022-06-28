@@ -1,0 +1,31 @@
+1920,76,230,0,255,Laurentian-Acadian Northern Hardwoods Forest
+1942,232,160,255,255,Laurentian-Acadian Swamp Systems
+1925,208,255,99,255,Laurentian-Acadian Pine-Hemlock-Hardwood Forest
+1926,0,255,220,255,Central Appalachian Dry Oak-Pine Forest
+1929,144,107,181,255,Acadian-Appalachian Montane Spruce-Fir Forest
+1924,255,191,191,255,Laurentian-Acadian Northern Pine(-Oak) Forest
+11,0,0,255,255,Open Water
+1927,214,255,145,255,Appalachian (Hemlock-)Northern Hardwood Forest
+1940,0,168,107,255,Laurentian-Acadian Shrub-Herbaceous Wetland Systems
+1937,207,61,255,255,Central Interior and Appalachian Swamp Systems
+1935,122,143,245,255,Laurentian-Acadian Floodplain Systems
+1934,36,255,20,255,Central Interior and Appalachian Riparian Systems
+1930,255,0,77,255,Central Appalachian Pine-Oak Rocky Woodland
+1983,208,255,99,255,Laurentian-Acadian Pine-Hemlock-Hardwood Forest
+1928,130,160,100,255,Acadian Low-Elevation Spruce-Fir-Hardwood Forest
+1978,76,230,0,255,Laurentian-Acadian Northern Hardwoods Forest
+1936,106,0,138,255,Boreal Acidic Peatland Systems
+1933,0,191,176,255,Central Interior and Appalachian Floodplain Systems
+1999,232,160,255,255,Laurentian-Acadian Swamp Systems
+1982,255,191,191,255,Laurentian-Acadian Northern Pine(-Oak) Forest
+1984,0,255,220,255,Central Appalachian Dry Oak-Pine Forest
+1986,130,160,100,255,Acadian Low-Elevation Spruce-Fir-Hardwood Forest
+1995,207,61,255,255,Central Interior and Appalachian Swamp Systems
+31,191,191,191,255,Barren-Rock/Sand/Clay
+1988,255,0,77,255,Central Appalachian Pine-Oak Rocky Woodland
+1932,100,31,87,255,Northern Atlantic Coastal Plain Dune and Swale
+1993,122,143,245,255,Laurentian-Acadian Floodplain Systems
+1941,211,237,38,255,North-Central Interior Wet Flatwoods
+1938,102,212,179,255,Gulf and Atlantic Coastal Plain Swamp Systems
+1931,237,0,179,255,Northern Atlantic Coastal Plain Maritime Forest
+1998,0,168,107,255,Laurentian-Acadian Shrub-Herbaceous Wetland Systems
