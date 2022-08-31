@@ -70,6 +70,19 @@ knitr::include_graphics("assets/logos.png")
 ---
 class: inverse, left, top
 
+# Pre-colonization Ecosystems-Background
+
+LANDFIRE Maps a concept termed "Biophysical Settings" (BpS) which:
+
+*represents the vegetation system that may have been dominant on the landscape prior to Euro-American settlement and is based on both the current biophysical environment and an approximation of the historical disturbance regime.*
+
+from https://landfire.gov/bps.php
+
+Each BpS has a mapped unit, a state-and-transition model and a description.  You can learn more about the descriptions and models at https://landfire.gov/bps-models.php 
+
+---
+class: inverse, left, top
+
 # Pre-colonization Ecosystems
 
 
@@ -80,7 +93,7 @@ knitr::include_graphics("assets/bpsChartTall.png")
 ---
 class: inverse, left, top
 
-# Pre-colonization Ecosystems
+# Pre-colonization Ecosystems Mapped
 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', out.width= "45%"}
@@ -92,9 +105,14 @@ class: inverse, left, top
 
 # Biophysical Settings notes
 
-- ADD NOTES
+- The Green Mountain National Forest was dominated by BpSs with relatively long fire return intervals such as the Laurentian-Acadian (LA) Northern Hardwoods.
+- There were notable fire-adapted BpSs such as the Central Appalachian (CA) Dry Oak-Pine Forest, and LA Northern Pine(-Oak) Forest.  
+- BpSs with historical Mean Fire Return Intervals of less than 100 years added up to ~35k acres, or around 9% of the area.
 
-Descriptions for all Biophysical Settings can be found by searching by name at https://landfirereview.org/search.php. Each BpS also has an accompanying state-and-transition model.   Please contact landfire@tnc.org, or Randy Swaty (rswaty@tnc.org) for more information. 
+<br>
+
+<p style="text-align: center;">The BpS products feature information on historical fire regimes as depicted in the next slides</p>
+
 
 ---
 
@@ -131,6 +149,24 @@ knitr::include_graphics("assets/mfri.png")
 ---
 class: inverse, left, top
 # Historical Fire Regimes Summary
+
+- Historically, LANDFIRE estimates there would have been ~3k acres of fire annually within the GMNF proclamation boundary
+- Almost all of the fire would have been of the 'surface' type, occurring in the CA Dry Oak-Pine Forest BpS
+- Some replacement fire was modeled in the LA Northern Hardwoods, but it would have been rare, with an almost 1k FRI
+- Most of the fire occurred on the western side of the proclamation boundary, just outside of the ownership boundary. 
+---
+
+class: inverse, left, top
+
+# Existing Vegetation Type-Background
+
+- The Existing Vegetation Type (Cover and Height, EVT, EVC, EVH respectfully) datasets represent conditions on the ground as of 2016.  2020 data is currently in progress, suggesting a redo of this analysis late 2022/early 2023.
+- The EVT data:
+**represents the current distribution of the terrestrial ecological systems classification, developed by NatureServe for the western hemisphere, through 2016**
+
+from https://landfire.gov/evt.php
+
+<p style="text-align: center;">Note: the EVT dataset was created with different methods and slightly different legend than the BpS data.  Compare with caution.</p>
 
 
 ---
