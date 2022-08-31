@@ -160,19 +160,19 @@ bpsChart <-
   ggplot(data = bpsname, aes(x = BPS_NAME, y = rel_percent)) +
   geom_bar(stat = "identity") +
   labs(
-    title = "Top 10 Biophysical Settings for Deer Creek Landscape",
+    title = "Top 10 Biophysical Settings",
     subtitle = "Represents dominant vegetation systems pre-European colonization",
     caption = "Represents ~95% of the landscape. \nData from landfire.gov.",
     x = "",
     y = "Percent of landscape") +
   scale_x_discrete(limits = rev(bpsname$BPS_NAME)) +
   coord_flip() +
-  theme_bw()
+  theme_bw(base_size = 14)
 
 bpsChart
 
 # if the plot looks good, save it
-ggsave("./OUTPUTS/bpsChart.png", width = 12, height = 5)
+ggsave("docs/assets/bpsChartTall.png", width = 12, height = 8)
 ```
 
 
@@ -269,7 +269,7 @@ ggsave("./OUTPUTS/fireChart.png", width = 12, height = 5)
 
 Chart
 ```{r evt bar, echo=FALSE, message=FALSE, warning=FALSE}
-evtname <- read.csv(file = "./OUTPUTS/evt_aoi_attributes.csv") %>%
+evtname <- read.csv(file = "./outputs/evt_aoi_attributes.csv") %>%
   group_by(EVT_NAME) %>%
   summarize(acres = sum(acres),
             hectare = sum(hectare),
@@ -282,19 +282,19 @@ evtChart <-
   ggplot(data = evtname, aes(x = EVT_NAME, y = rel_percent)) +
   geom_bar(stat = "identity") +
   labs(
-    title = "Top 10 Existing Vegetation Types for Deer Creek Landscape",
+    title = "Top 10 Existing Vegetation Types",
     subtitle = "Represents dominant vegetation systems ca2016",
     caption = "Represents ~75% of the landscape. There are 55 EVTs total. \nData from landfire.gov.",
     x = "",
     y = "Percent of landscape") +
   scale_x_discrete(limits = rev(evtname$EVT_NAME)) +
   coord_flip() +
-  theme_bw()
+  theme_bw(base_size = 14)
 
 evtChart
 
 # save the plot
-ggsave( "./OUTPUTS/evtname_barplot.png", width = 12, height = 5)
+ggsave( "./docs/assets/evtname_barplotTall.png", width = 12, height = 8)
 ```
 
 
@@ -430,12 +430,12 @@ evcChart <-
     y = "Percent of landscape") +
   scale_fill_manual(values = cols, name = "") +
   coord_flip() +
-  theme_bw()
+  theme_bw(base_size = 14)
 
 evcChart
 
 # save the plot
-ggsave("./OUTPUTS/evcclass_barplot.png", width = 12, height = 9)
+ggsave("docs/assets/evcclass_barplot.png", width = 12, height = 9)
 ```
 
 
@@ -564,12 +564,12 @@ ggplot(data = evhgroup, aes(x = label, y = rel_percent, fill = legend)) +
     y = "Percent of landscape") +
   scale_fill_manual(values = cols, name = "") +
   coord_flip() +
-  theme_bw()
+  theme_bw(base_size = 14)
 
 evhChart
 
 # save plot
-ggsave("./OUTPUTS/evhclass_barplot.png", width = 12, height = 9)
+ggsave("docs/assets/evhclass_barplot.png", width = 12, height = 9)
 
 ```
 

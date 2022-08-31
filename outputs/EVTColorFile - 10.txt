@@ -1,0 +1,10 @@
+7302,171,255,138,255,Northern Hardwoods Forest
+7374,186,54,14,255,Montane Spruce-Fir Forest
+7241,0,92,0,255,Pine-Hemlock-Hardwood Forest
+7555,186,54,14,255,Low-Elevation Spruce-Fir-Hardwood Forest
+7366,0,92,0,255,Pine-Hemlock Forest
+9185,186,54,14,255,Conifer-Hardwood Acidic Swamp
+7977,227,212,28,255,Pasture and Hayland
+7373,186,54,14,255,Low-Elevation Spruce-Fir Forest
+7240,0,92,0,255,Laurentian-Acadian Hardwood Forest
+7930,64,61,168,255,Ruderal Deciduous Forest

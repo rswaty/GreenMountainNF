@@ -1,0 +1,28 @@
+BpS,Sclass,Current,Reference
+Northern Hardwoods Forest,Regeneration,0,4
+Northern Hardwoods Forest,Agriculture,2,0
+Northern Hardwoods Forest,Regeneration2,1,5
+Northern Hardwoods Forest,Barren or Sparse,0,0
+Northern Hardwoods Forest,"Late-development, closed canopy",0,66
+Northern Hardwoods Forest,"Mid-development, closed canopy",23,18
+Northern Hardwoods Forest,"Late-development2, closed canopy",49,7
+Northern Hardwoods Forest,UE,2,0
+Northern Hardwoods Forest,UN,20,0
+Northern Hardwoods Forest,Urban,4,0
+Pine-Hemlock-Hardwood Forest,Regeneration,0,3
+Pine-Hemlock-Hardwood Forest,Agriculture,5,0
+Pine-Hemlock-Hardwood Forest,Regeneration2,2,16
+Pine-Hemlock-Hardwood Forest,Barren or Sparse,0,0
+Pine-Hemlock-Hardwood Forest,"Mid-development, closed canopy",1,39
+Pine-Hemlock-Hardwood Forest,"Late-development, closed canopy",78,42
+Pine-Hemlock-Hardwood Forest,UE,6,
+Pine-Hemlock-Hardwood Forest,Urban,8,0
+Swamp Systems,Regeneration,1,14
+Swamp Systems,Agriculture,4,0
+Swamp Systems,Regeneration2,5,11
+Swamp Systems,Barren or Sparse,0,0
+Swamp Systems,"Mid-development, closed canopy",43,21
+Swamp Systems,"Late-development, closed canopy",0,54
+Swamp Systems,UE,5,0
+Swamp Systems,UN,34,0
+Swamp Systems,Urban,8,0
