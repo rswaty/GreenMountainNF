@@ -358,7 +358,7 @@ Map data and attribute table
 
 Chart
 ```{r evc chart, echo=FALSE, message=FALSE, warning=FALSE}
-evcname <- read.csv(file = "./OUTPUTS/evc_aoi_attributes.csv")
+evcname <- read.csv(file = "outputs/evc_aoi_attributes.csv")
 
 # create "type" column based on conditions
 evcname <- evcname %>% mutate(type = if_else(VALUE %in% 11, "Open Water",
@@ -423,7 +423,7 @@ evcChart <-
   ggplot(data = evcgroup, aes(x = label, y = rel_percent, fill = legend)) +
   geom_bar(stat = "identity") +
   labs(
-    title = "Existing Vegetation Cover for Deer Creek Landscape",
+    title = "Existing Vegetation Cover",
     subtitle = "Represents canopy cover of dominant lifeform ca2016",
     caption = "\nData from landfire.gov.",
     x = "",
@@ -435,7 +435,7 @@ evcChart <-
 evcChart
 
 # save the plot
-ggsave("docs/assets/evcclass_barplot.png", width = 12, height = 9)
+ggsave("assets/evcclass_barplot.png", width = 12, height = 9)
 ```
 
 
@@ -499,7 +499,7 @@ Chart
 ```{r evh chart, echo=FALSE, message=FALSE, warning=FALSE}
 
 # load evh attribute table
-evhname <- read.csv(file = "./OUTPUTS/evh_aoi_attributes.csv")
+evhname <- read.csv(file = "outputs/evh_aoi_attributes.csv")
 
 # create "type" column based on conditions
 evhname <- evhname %>% mutate(type = if_else(VALUE %in% 11, "Open Water",
@@ -557,7 +557,7 @@ evhChart <-
 ggplot(data = evhgroup, aes(x = label, y = rel_percent, fill = legend)) +
   geom_bar(stat = "identity") +
   labs(
-    title = "Existing Vegetation Height for Deer Creek Landscape",
+    title = "Existing Vegetation Height",
     subtitle = "Represents canopy height of dominant lifeform ca2016",
     caption = "\nData from landfire.gov.",
     x = "",
@@ -725,8 +725,10 @@ bps_scls <- bps_scls %>%
 bps_scls$Sclass <- factor(bps_scls$Sclass, levels = c(
   "Regeneration", 
   "Regeneration2",
-  "Mid-development, closed canopy", 
-  "Late-development, closed canopy", 
+  "Mid-development, closed canopy",
+  "Mid-development, open canopy",
+  "Late-development, closed canopy",
+  "Late-development, open canopy",
   "Late-development2, closed canopy",
   "UE", 
   "UN", 
@@ -765,7 +767,7 @@ sclasplot <-
 
 sclasplot
 
-ggsave("./OUTPUTS/bpsScls.png", width = 12, height = 9)
+ggsave("docs/assets/bpsScls.png", width = 12, height = 9)
 
 ```
 

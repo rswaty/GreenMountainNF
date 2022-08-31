@@ -154,6 +154,7 @@ class: inverse, left, top
 - Almost all of the fire would have been of the 'surface' type, occurring in the CA Dry Oak-Pine Forest BpS
 - Some replacement fire was modeled in the LA Northern Hardwoods, but it would have been rare, with an almost 1k FRI
 - Most of the fire occurred on the western side of the proclamation boundary, just outside of the ownership boundary. 
+
 ---
 
 class: inverse, left, top
@@ -161,10 +162,11 @@ class: inverse, left, top
 # Existing Vegetation Type-Background
 
 - The Existing Vegetation Type (Cover and Height, EVT, EVC, EVH respectfully) datasets represent conditions on the ground as of 2016.  2020 data is currently in progress, suggesting a redo of this analysis late 2022/early 2023.
-- The EVT data:
+- The EVT data (from https://landfire.gov/evt.php):
+
 **represents the current distribution of the terrestrial ecological systems classification, developed by NatureServe for the western hemisphere, through 2016**
 
-from https://landfire.gov/evt.php
+
 
 <p style="text-align: center;">Note: the EVT dataset was created with different methods and slightly different legend than the BpS data.  Compare with caution.</p>
 
@@ -195,9 +197,11 @@ class: inverse, left, top
 
 # Existing Vegetation Type notes
 
-- ADD NOTES
- 
-More information on the EVT dataset available at https://landfire.gov/evt.php.  Descriptions of EVTs available at https://www.landfire.gov/documents/LANDFIRE_Ecological_Systems_Descriptions_CONUS.pdf.  
+- The dominant ecosystem mapped in the EVT data set was the LA Northern Hardwoods, followed by spruce-fir and pine-hemlock types.  
+- Ecosystems with MFRIs of less than 100 years were mapped as occurring on less than 17k acres within the proclamation boundary. This is roughly 1/2 of what was mapped in the BpS dataset.  Note-this difference may be due to real changes on the landscape and/or differences in mapping methods.
+- Roughly 80k acres within the proclamation boundary has been converted to non-natural land uses (e.g., urban and agriculture).
+- The spruce-fir types increased from the BpS data, though representation is still limited to less than 10% of the area.  
+
 ---
 class: inverse, left, top
 
@@ -218,14 +222,6 @@ class: inverse, left, top
 knitr::include_graphics("assets/evc.jpg")
 ```
 
----
-class: inverse, left, top
-
-# Existing Vegetation Cover notes
-
-- ADD NOTES
-
-More information on the Existing Vegetation Cover dataset can be found at https://www.landfire.gov/evc.php
 
 ---
 class: inverse, left, top
@@ -247,13 +243,14 @@ knitr::include_graphics("assets/evh.jpg")
 ```
 
 ---
+
 class: inverse, left, top
 
-# Existing Vegetation Height notes
+# Existing Vegetation Cover and Height Summary
 
-- ADD NOTES
-
-More information on the Existing Vegetation Height dataset can be found at https://www.landfire.gov/evh.php
+- Most vegetation mapped was "Tree", with the largest category of cover being 70-79% and height being 15-20M.
+- Alone these datasets may have limited value; combined they have much more.  For example, these datasets plus the BpS dataset may be combined with rulesets from LANDFIRE to map 'succession classes' (structural stages). See next slide for example outputs.
+- The LA Northern Hardwoods would have had substantial amounts of treed vegetation taller than 25M; these trees are mapped at very minor amounts in the EVH dataset. 
 
 ---
 
@@ -261,7 +258,7 @@ class: left, top
 
 # Past vs Present-one way to explore
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', out.height='80%'}
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', out.width='90%'}
 
 knitr::include_graphics("assets/bpsScls.png")
 
@@ -272,9 +269,13 @@ class: inverse, left, top
 
 # Past vs Present-notes
 
-- ADD NOTES
-    
 *While looking at the past is illustrative, LANDFIRE past values do not necessarily represent "Desired Future Conditions".*
+
+<br>
+
+- Each BpS in the example chart has unique over and under representation of succession classes
+- The LA Northern Hardwoods is largely missing the late-development, closed succession class, the Pine-Hemlock-Hardwood missing some of the early and mid classes.
+- While the CA Dry Pine-Oak BpS is not widespread, it is an illustrative example of a fire-adapted ecosystem.  It is largely missing the late-open succession class.  
 
 
 ---
